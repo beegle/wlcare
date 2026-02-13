@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17894544549"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'AW-17894544549');
   </script>
@@ -13,24 +14,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us & Schedule a Tour | West Linn Care</title>
-  <meta name="description" content="Contact West Linn Care to schedule a tour of our adult foster home. Call (503) 387-5317 or fill out our tour request form. Located at 1560 Rosemont Road, West Linn, OR.">
+  <meta name="description"
+    content="Contact West Linn Care to schedule a tour of our adult foster home. Call (503) 387-5317 or fill out our tour request form. Located at 1560 Rosemont Road, West Linn, OR.">
   <link rel="canonical" href="https://westlinncare.com/contact">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Contact Us & Schedule a Tour | West Linn Care">
-  <meta property="og:description" content="Schedule a tour of our adult foster home in West Linn, Oregon. Call (503) 387-5317.">
+  <meta property="og:description"
+    content="Schedule a tour of our adult foster home in West Linn, Oregon. Call (503) 387-5317.">
   <meta property="og:image" content="/images/hero.png">
   <meta property="og:url" content="https://westlinncare.com/contact">
   <meta property="og:type" content="website">
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:brand" content="West Linn Care">
+  <meta name="twitter:title" content="Contact Us & Schedule a Tour | West Linn Care">
+  <meta name="twitter:description"
+    content="Schedule a tour of our adult foster home in West Linn, Oregon. Call (503) 387-5317.">
+  <meta name="twitter:image" content="https://westlinncare.com/images/hero.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact West Linn Care",
+      "description": "Contact information and tour request form for West Linn Care adult foster home.",
+      "url": "https://westlinncare.com/contact",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "West Linn Care",
+        "telephone": "+1-503-387-5317",
+        "email": "ken@westlinncare.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1560 Rosemont Road",
+          "addressLocality": "West Linn",
+          "addressRegion": "OR",
+          "postalCode": "97068",
+          "addressCountry": "US"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://westlinncare.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://westlinncare.com/contact"
+      }]
+    }
+  ]
+  </script>
+
   <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
   <!-- Header -->
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="/images/logo.jpeg" alt="West Linn Care logo">
+        <img src="/images/logo.jpeg" alt="West Linn Care logo" width="50" height="50">
       </a>
 
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -150,14 +204,16 @@
 
               <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us about your loved one or any questions you have..."></textarea>
+                <textarea id="message" name="message" rows="4"
+                  placeholder="Tell us about your loved one or any questions you have..."></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-large btn-full">Request a Tour</button>
             </form>
 
             <div id="form-success" class="form-success" hidden>
-              <p>Thank you for your interest in West Linn Care! We'll be in touch within 24 hours to confirm your tour.</p>
+              <p>Thank you for your interest in West Linn Care! We'll be in touch within 24 hours to confirm your tour.
+              </p>
             </div>
           </div>
         </div>
@@ -170,7 +226,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/images/logo.jpeg" alt="West Linn Care logo" class="footer-logo">
+          <img src="/images/logo.jpeg" alt="West Linn Care logo" class="footer-logo" width="80" height="80">
           <p>Compassionate care in a true home setting.</p>
         </div>
 
@@ -213,4 +269,5 @@
 
   <script src="/script.js"></script>
 </body>
+
 </html>
