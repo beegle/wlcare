@@ -43,7 +43,7 @@
   }
 
   // ========================================
-  // Smooth Scroll (fallback for older browsers)
+  // Smooth Scroll (only for same-page hash links)
   // ========================================
   const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -54,7 +54,9 @@
       // Skip if it's just "#"
       if (href === '#') return;
 
-      const target = document.querySelector(href);
+      // Only handle if the target element exists on the current page
+      var target;
+      try { target = document.querySelector(href); } catch(err) { return; }
       if (target) {
         e.preventDefault();
 

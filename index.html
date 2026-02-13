@@ -14,22 +14,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>West Linn Care | Adult Foster Home in West Linn, Oregon</title>
   <meta name="description" content="West Linn Care provides compassionate, personalized care in a warm, home-like setting. Our adult foster home in West Linn, Oregon offers comfort and attention your loved one deserves.">
+  <link rel="canonical" href="https://westlinncare.com/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="West Linn Care | Adult Foster Home">
   <meta property="og:description" content="Compassionate, personalized care in a warm, home-like setting in West Linn, Oregon.">
-  <meta property="og:image" content="images/hero.png">
+  <meta property="og:image" content="/images/hero.png">
   <meta property="og:url" content="https://westlinncare.com">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "West Linn Care",
+    "description": "Adult foster home providing compassionate, personalized care in a warm, home-like setting in West Linn, Oregon.",
+    "url": "https://westlinncare.com",
+    "telephone": "+1-503-387-5317",
+    "email": "ken@westlinncare.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1560 Rosemont Road",
+      "addressLocality": "West Linn",
+      "addressRegion": "OR",
+      "postalCode": "97068",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "45.3654",
+      "longitude": "-122.6126"
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "$$",
+    "image": "https://westlinncare.com/images/hero.png",
+    "@id": "https://westlinncare.com/#localbusiness"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <!-- Hash redirect for backwards compatibility -->
+  <script>
+    (function() {
+      var hash = window.location.hash;
+      var redirects = {
+        '#about': '/about',
+        '#services': '/services',
+        '#our-home': '/our-home',
+        '#contact': '/contact',
+        '#daily-life': '/about'
+      };
+      if (hash && redirects[hash]) {
+        window.location.replace(redirects[hash]);
+      }
+    })();
+  </script>
+
   <!-- Header -->
   <header class="header" id="header">
     <div class="container header-inner">
-      <a href="#" class="logo">
-        <img src="images/logo.jpeg" alt="West Linn Care logo">
+      <a href="/" class="logo">
+        <img src="/images/logo.jpeg" alt="West Linn Care logo">
       </a>
 
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -38,12 +86,12 @@
 
       <nav class="nav" id="nav">
         <ul class="nav-list">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#our-home" class="nav-link">Our Home</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/services" class="nav-link">Services</a></li>
+          <li><a href="/our-home" class="nav-link">Our Home</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary nav-cta">Schedule a Tour</a>
+        <a href="/contact" class="btn btn-primary nav-cta">Schedule a Tour</a>
       </nav>
     </div>
   </header>
@@ -52,7 +100,7 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-image">
-        <img src="images/hero.png" alt="West Linn Care home exterior - a welcoming craftsman-style house with stone accents and wheelchair accessible ramp">
+        <img src="/images/hero.png" alt="West Linn Care home exterior - a welcoming craftsman-style house with stone accents and wheelchair accessible ramp">
       </div>
       <div class="hero-overlay"></div>
       <div class="container hero-content">
@@ -60,7 +108,7 @@
         <h1>Compassionate Care in a True Home Setting</h1>
         <p class="hero-subtitle">Welcome to West Linn Care, where we provide personalized, compassionate care in a warm, home-like setting. Our adult foster home in beautiful West Linn, Oregon offers the comfort and attention your loved one deserves.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary btn-large">Schedule a Tour</a>
+          <a href="/contact" class="btn btn-primary btn-large">Schedule a Tour</a>
           <a href="tel:+15033875317" class="btn btn-secondary btn-large">
             <span class="phone-icon" aria-hidden="true"></span>
             Call (503) 387-5317
@@ -69,7 +117,7 @@
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Preview Section -->
     <section class="section section-cream" id="about">
       <div class="container">
         <h2 class="section-title">What is an Adult Foster Home?</h2>
@@ -101,21 +149,13 @@
           </div>
         </div>
 
-        <div class="benefits-box">
-          <h3>The Benefits of Adult Foster Care</h3>
-          <ul class="benefits-list">
-            <li>Personalized, one-on-one attention</li>
-            <li>Home-cooked meals tailored to preferences</li>
-            <li>Quiet, peaceful residential neighborhood</li>
-            <li>Strong bonds with caregivers and fellow residents</li>
-            <li>Flexible routines that respect individual needs</li>
-            <li>More affordable than many larger facilities</li>
-          </ul>
+        <div style="text-align: center;">
+          <a href="/about" class="learn-more">Learn More About Us</a>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Preview Section -->
     <section class="section" id="services">
       <div class="container">
         <h2 class="section-title">Our Services</h2>
@@ -139,60 +179,22 @@
           </div>
 
           <div class="service-item">
-            <div class="service-icon activities-icon" aria-hidden="true"></div>
-            <div class="service-content">
-              <h3>Activities & Engagement</h3>
-              <p>We encourage an active, engaged lifestyle with daily activities suited to each resident's interests and abilities. From puzzles and games to gardening and crafts, there's always something to enjoy.</p>
-            </div>
-          </div>
-
-          <div class="service-item">
             <div class="service-icon personal-care-icon" aria-hidden="true"></div>
             <div class="service-content">
               <h3>Personal Care Assistance</h3>
               <p>Respectful assistance with daily living activities including bathing, dressing, grooming, and mobility support—always preserving dignity and encouraging independence.</p>
             </div>
           </div>
+        </div>
 
-          <div class="service-item">
-            <div class="service-icon housekeeping-icon" aria-hidden="true"></div>
-            <div class="service-content">
-              <h3>Housekeeping & Laundry</h3>
-              <p>A clean, comfortable home is essential. We handle all housekeeping and laundry so residents can simply relax and enjoy their home.</p>
-            </div>
-          </div>
-
-          <div class="service-item">
-            <div class="service-icon companionship-icon" aria-hidden="true"></div>
-            <div class="service-content">
-              <h3>Companionship</h3>
-              <p>Perhaps most importantly, we provide genuine companionship. Our caregivers take time to know each resident personally, sharing conversations, activities, and daily moments together.</p>
-            </div>
-          </div>
+        <div style="text-align: center; margin-top: var(--spacing-lg);">
+          <a href="/services" class="learn-more">View All Services</a>
         </div>
       </div>
     </section>
 
-    <!-- Daily Life Section -->
-    <section class="section section-cream" id="daily-life">
-      <div class="container">
-        <div class="content-with-image">
-          <div class="content-text">
-            <h2 class="section-title">Daily Life & Activities</h2>
-            <p><strong>Daily activities are essential to our residents' well-being—supporting physical health, mental sharpness, social connection, and emotional expression.</strong></p>
-            <p>At West Linn Care, each day offers opportunities tailored to individual interests: puzzles and games to keep minds active, gentle stretching and walks for mobility, arts and crafts for creativity, gardening and outdoor time for fresh air, and shared meals and conversations for meaningful connection.</p>
-            <p>We follow each resident's lead. Some days are for activity, others for quiet rest. We always respect personal preferences while encouraging engagement that brings joy and purpose.</p>
-          </div>
-          <div class="content-image">
-            <img src="images/living_room.jpeg" alt="Bright living room with piano, skylights, hardwood floors, and comfortable seating area">
-            <span class="image-caption">Comfortable spaces for relaxing and socializing</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Home Section -->
-    <section class="section" id="our-home">
+    <!-- Our Home Preview Section -->
+    <section class="section section-cream" id="our-home">
       <div class="container">
         <h2 class="section-title">Our Home</h2>
         <p class="section-intro">Our home is designed for comfort, safety, and the feeling of truly being at home.</p>
@@ -200,34 +202,12 @@
         <div class="home-gallery">
           <div class="gallery-item gallery-item-reverse">
             <div class="gallery-image">
-              <img src="images/dining_room.jpeg" alt="Elegant dining room with bay windows, wooden dining table and ornate chairs, connected to kitchen">
+              <img src="/images/dining_room.jpeg" alt="Elegant dining room with bay windows, wooden dining table and ornate chairs, connected to kitchen">
               <span class="image-caption">Where we gather for home-cooked meals</span>
             </div>
             <div class="gallery-text">
               <h3>Dining Area</h3>
               <p>Our bright, welcoming dining room features beautiful bay windows that fill the space with natural light. Residents gather here for delicious home-cooked meals and meaningful conversation.</p>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <div class="gallery-image">
-              <img src="images/bedroom_01.jpeg" alt="Spacious private bedroom with large arched window, comfortable bed, recliner, and wooden furniture">
-              <span class="image-caption">Private rooms for rest and privacy</span>
-            </div>
-            <div class="gallery-text">
-              <h3>Private Rooms</h3>
-              <p>Each resident enjoys their own private room complete with a half bathroom. Rooms are spacious with large windows for natural light. Bring your own furnishings and personal items to make the space uniquely yours.</p>
-            </div>
-          </div>
-
-          <div class="gallery-item gallery-item-reverse">
-            <div class="gallery-image">
-              <img src="images/bedroom_02.jpeg" alt="Cozy bedroom with landscape painting, bedside lamp, closet, and warm hardwood floors">
-              <span class="image-caption">A peaceful retreat</span>
-            </div>
-            <div class="gallery-text">
-              <h3>Home-Like Comfort</h3>
-              <p>From comfortable common areas to private bedrooms, every space is designed to feel like home—because it is one. Warm colors, quality furnishings, and thoughtful details create a peaceful environment.</p>
             </div>
           </div>
         </div>
@@ -246,104 +226,24 @@
             <p>Real residential home in a quiet neighborhood, not an institutional facility.</p>
           </div>
         </div>
+
+        <div style="text-align: center; margin-top: var(--spacing-lg);">
+          <a href="/our-home" class="learn-more">Tour Our Home</a>
+        </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section section-cream" id="contact">
+    <!-- CTA Banner -->
+    <section class="cta-banner">
       <div class="container">
-        <h2 class="section-title">Schedule a Tour</h2>
-        <p class="section-intro">We'd love to show you around and answer any questions. Contact us today to schedule a visit or learn more about West Linn Care.</p>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>Contact Information</h3>
-
-            <div class="contact-item">
-              <span class="contact-icon phone-contact-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Phone</strong>
-                <a href="tel:+15033875317">(503) 387-5317</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-icon phone-contact-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Fax</strong>
-                <span>(503) 387-5417</span>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-icon email-contact-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Email</strong>
-                <a href="mailto:ken@westlinncare.com">ken@westlinncare.com</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-icon location-contact-icon" aria-hidden="true"></span>
-              <div>
-                <strong>Address</strong>
-                <address>
-                  1560 Rosemont Road<br>
-                  West Linn, OR 97068
-                </address>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-form-wrapper">
-            <h3>Request a Tour</h3>
-            <form id="tour-form" action="https://formspree.io/f/xojjkjar" method="POST" class="contact-form">
-              <div class="form-group">
-                <label for="name">Name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Your full name">
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="your@email.com">
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="(503) 555-0000">
-              </div>
-
-              <fieldset class="form-group">
-                <legend>Preferred Contact Method <span class="required">*</span></legend>
-                <div class="radio-group">
-                  <label class="radio-label">
-                    <input type="radio" name="contact_method" value="email" required>
-                    <span>Email</span>
-                  </label>
-                  <label class="radio-label">
-                    <input type="radio" name="contact_method" value="phone">
-                    <span>Phone</span>
-                  </label>
-                </div>
-              </fieldset>
-
-              <div class="form-group">
-                <label for="tour-date">Preferred Tour Date</label>
-                <input type="date" id="tour-date" name="tour_date">
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us about your loved one or any questions you have..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-large btn-full">Request a Tour</button>
-            </form>
-
-            <div id="form-success" class="form-success" hidden>
-              <p>Thank you for your interest in West Linn Care! We'll be in touch within 24 hours to confirm your tour.</p>
-            </div>
-          </div>
+        <h2>Ready to Learn More?</h2>
+        <p>We'd love to show you around and answer any questions about our home.</p>
+        <div class="cta-buttons">
+          <a href="/contact" class="btn btn-primary btn-large">Schedule a Tour</a>
+          <a href="tel:+15033875317" class="btn btn-secondary btn-large">
+            <span class="phone-icon" aria-hidden="true"></span>
+            Call (503) 387-5317
+          </a>
         </div>
       </div>
     </section>
@@ -354,17 +254,25 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="images/logo.jpeg" alt="West Linn Care logo" class="footer-logo">
+          <img src="/images/logo.jpeg" alt="West Linn Care logo" class="footer-logo">
           <p>Compassionate care in a true home setting.</p>
         </div>
 
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#our-home">Our Home</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/our-home">Our Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/adult-foster-home-vs-assisted-living">Adult Foster Home vs Assisted Living</a></li>
+            <li><a href="/areas-we-serve">Areas We Serve</a></li>
           </ul>
         </div>
 
@@ -387,6 +295,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>

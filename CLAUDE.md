@@ -2,15 +2,39 @@
 
 ## Project Context
 
-This is a single-page marketing website for West Linn Care, an adult foster home in West Linn, Oregon. The site targets adult children researching care options for their aging parents and serves as a landing page for online advertising campaigns.
+This is a multi-page marketing website for West Linn Care, an adult foster home in West Linn, Oregon. The site targets adult children researching care options for their aging parents and serves as a landing page for online advertising campaigns.
 
 ## Key Constraints
 
 - **No libraries**: Use only vanilla HTML, CSS, and JavaScript
-- **Single page**: All content on index.html with anchor navigation
+- **Multi-page**: 7 pages using subdirectory `index.html` pattern for clean URLs
 - **Mobile-first**: Design and code for mobile phones first, enhance for larger screens
 - **Accessibility first**: Semantic HTML, ARIA labels where needed, keyboard navigation
 - **Performance**: Optimize images, minimize render-blocking resources
+
+## Site Architecture
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/` | `index.html` | Homepage with hero + condensed section previews |
+| `/about` | `about/index.html` | Full about content, feature cards, benefits, daily life |
+| `/services` | `services/index.html` | Full services grid with descriptions |
+| `/our-home` | `our-home/index.html` | Full gallery, all images, amenities |
+| `/contact` | `contact/index.html` | Contact info + tour request form |
+| `/adult-foster-home-vs-assisted-living` | `adult-foster-home-vs-assisted-living/index.html` | SEO comparison page |
+| `/areas-we-serve` | `areas-we-serve/index.html` | SEO geo page for surrounding areas |
+
+### Navigation Structure
+- **Main nav** (header): About | Services | Our Home | Contact | [Schedule a Tour button]
+- **Footer**: All main nav links + Resources section with SEO pages
+- SEO pages appear in footer only (not in main nav)
+
+### Shared Patterns
+- **Header/footer**: Duplicated HTML across all pages (no JS injection)
+- **Asset paths**: All root-relative (`/images/...`, `/styles.css`, `/script.js`)
+- **Active nav**: Current page's nav link gets `.nav-link.active` class
+- **Subpage template**: page-header → breadcrumb → content → cta-banner → footer
+- **Hash redirect**: Homepage has inline script redirecting old `/#section` URLs to new pages
 
 ## Mobile-First Responsive Design
 
@@ -90,41 +114,50 @@ All images are in `/images/`:
 
 ## Form Setup
 
-The contact form uses Formspree. To activate:
-1. Create account at formspree.io
-2. Create new form
-3. Replace `[YOUR_FORM_ID]` in the form action URL
+The contact form uses Formspree (on `/contact` page). Currently configured with form ID `xojjkjar`.
 
 ## Testing Checklist
 
 Before considering complete:
 
 ### Mobile Testing (PRIMARY - test first)
-- [ ] Page looks correct at 375px width (iPhone SE)
-- [ ] Page looks correct at 390px width (iPhone 14)
-- [ ] Hamburger menu opens/closes correctly
-- [ ] Phone number is tap-to-call
+- [ ] All 7 pages look correct at 375px width (iPhone SE)
+- [ ] All 7 pages look correct at 390px width (iPhone 14)
+- [ ] Hamburger menu opens/closes correctly on every page
+- [ ] Phone number is tap-to-call on every page
 - [ ] All touch targets are minimum 44px
-- [ ] No horizontal scrolling at any point
-- [ ] Form is easy to fill out on mobile
+- [ ] No horizontal scrolling at any point on any page
+- [ ] Form is easy to fill out on mobile (contact page)
 - [ ] Text is readable without zooming
 
 ### Tablet Testing
-- [ ] Page looks correct at 768px width (iPad)
+- [ ] All pages look correct at 768px width (iPad)
 - [ ] Layouts transition smoothly from mobile
 
 ### Desktop Testing
-- [ ] Page looks correct at 1024px+ width
+- [ ] All pages look correct at 1024px+ width
 - [ ] Navigation displays expanded (no hamburger)
 - [ ] Multi-column layouts display correctly
 
 ### General
-- [ ] All navigation links work (smooth scroll)
+- [ ] All navigation links work across all pages
+- [ ] Active nav state highlights correctly on each page
+- [ ] Hash redirects work (e.g., `/#about` → `/about`)
 - [ ] Form validates required fields
-- [ ] Form submits to Formspree (or shows placeholder success)
-- [ ] All images load with appropriate alt text
+- [ ] Form submits to Formspree
+- [ ] All images load with appropriate alt text from all pages
 - [ ] Color contrast meets WCAG AA standards
-- [ ] Page loads without JavaScript errors
+- [ ] No JavaScript errors on any page
+- [ ] Each page has unique title, meta description, canonical URL, and OG tags
+- [ ] Breadcrumbs display correctly on subpages
+
+## SEO
+
+- **Sitemap**: `sitemap.xml` lists all 7 pages
+- **Robots**: `robots.txt` allows all, references sitemap
+- **Structured data**: JSON-LD LocalBusiness on homepage
+- **Canonical URLs**: Every page has `<link rel="canonical">`
+- **OG tags**: Every page has Open Graph meta tags
 
 ## Hosting
 
@@ -136,40 +169,51 @@ Before considering complete:
 ## File Structure
 
 ```
-index.html    - Single page with all content
-styles.css    - All styles written mobile-first (base = mobile, min-width queries for larger)
-script.js     - Minimal JS for interactivity
-CNAME         - Custom domain file (contains: westlinncare.com)
-/images/      - All image assets
+index.html                                      - Homepage (hero + previews)
+styles.css                                      - All styles (mobile-first)
+script.js                                       - Minimal JS for interactivity
+sitemap.xml                                     - XML sitemap for search engines
+robots.txt                                      - Robots directives
+CNAME                                           - Custom domain (westlinncare.com)
+/images/                                        - All image assets
+/about/index.html                               - About page
+/services/index.html                            - Services page
+/our-home/index.html                            - Our Home page
+/contact/index.html                             - Contact page (with form)
+/adult-foster-home-vs-assisted-living/index.html - AFH vs Assisted Living (SEO)
+/areas-we-serve/index.html                      - Areas We Serve (SEO)
 ```
-
-## Placeholder Content
-
-These items need real values before launch:
-- Phone number: `[Phone Number]`
-- Email: `[Email Address]`
-- Street address: `[Street Address]`
-- ZIP code: `[ZIP]`
-- Formspree form ID: `[YOUR_FORM_ID]`
 
 ## Deployment Checklist
 
 Before going live:
-- [ ] Create CNAME file with `westlinncare.com`
+- [x] Create CNAME file with `westlinncare.com`
 - [ ] Configure DNS records at domain registrar
 - [ ] Enable GitHub Pages in repo settings
 - [ ] Verify HTTPS is working
-- [ ] Replace all placeholder contact info
-- [ ] Set up Formspree and update form action URL
+- [x] Contact info populated (phone, email, address)
+- [x] Formspree form configured
 - [ ] Test form submission on live site
+- [ ] Verify all pages load correctly on live domain
+
+## Conventions for Adding New Pages
+
+1. Create `page-name/index.html` in root
+2. Use root-relative asset paths (`/styles.css`, `/images/...`)
+3. Copy header/footer from an existing subpage
+4. Set the correct `.nav-link.active` class (or none for non-nav pages)
+5. Include: gtag, unique `<title>`, `<meta description>`, canonical URL, OG tags
+6. Follow subpage template: page-header → breadcrumb → content → cta-banner
+7. Add the page to `sitemap.xml`
+8. If it should appear in navigation, update header nav on ALL pages
 
 ## Do Not
 
 - Add CSS or JS libraries (Bootstrap, jQuery, etc.)
-- Create multiple HTML pages
 - Add features not in SPEC.md without approval
 - Use generic stock photos - only use provided images
 - Make it feel institutional or clinical
 - Write desktop-first CSS (no `max-width` media queries)
 - Use fixed widths that break on mobile
 - Create touch targets smaller than 44px
+- Use relative asset paths (always use root-relative `/...`)

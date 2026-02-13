@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://westlinncare.com/sitemap.xml
