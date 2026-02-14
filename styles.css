@@ -1380,6 +1380,57 @@ address {
 }
 
 /* ========================================
+   Promo Banner
+   ======================================== */
+.promo-banner {
+  background-color: var(--terracotta);
+  color: var(--white);
+  padding: var(--spacing-md) 0;
+}
+
+.promo-inner {
+  text-align: center;
+}
+
+.promo-label {
+  display: inline-block;
+  background-color: var(--dark-brown);
+  color: var(--white);
+  padding: 0.2rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.promo-headline {
+  font-size: 1.15rem;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+}
+
+.promo-headline strong {
+  font-size: 1.35rem;
+}
+
+.promo-banner .btn {
+  background-color: var(--white);
+  color: var(--dark-brown);
+  border-color: var(--white);
+  font-size: 0.95rem;
+  padding: 0.625rem 1.5rem;
+}
+
+.promo-banner .btn:hover,
+.promo-banner .btn:focus {
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--dark-brown);
+}
+
+/* ========================================
    Utility Classes
    ======================================== */
 .sr-only {
