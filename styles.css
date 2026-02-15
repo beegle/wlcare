@@ -12,15 +12,15 @@
   --terracotta-hover: #A8896E;
   --white: #FFFFFF;
 
-  --font-serif: Georgia, 'Times New Roman', serif;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-xxl: 4rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 5rem;
 
   --header-height: 70px;
 }
@@ -45,6 +45,7 @@ body {
   line-height: 1.6;
   color: var(--brown);
   background-color: var(--warm-cream);
+  padding-bottom: 50px;
 }
 
 img {
@@ -333,8 +334,8 @@ address {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(74, 63, 53, 0.7) 0%,
-    rgba(74, 63, 53, 0.8) 100%
+    rgba(74, 63, 53, 0.35) 0%,
+    rgba(74, 63, 53, 0.7) 100%
   );
   z-index: -1;
 }
@@ -348,12 +349,14 @@ address {
   color: var(--white);
   font-size: 2rem;
   margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
   margin-bottom: var(--spacing-lg);
   opacity: 0.95;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .availability-badge {
@@ -386,6 +389,21 @@ address {
   background-color: var(--cream);
 }
 
+/* Section Dividers (#5) */
+.section::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--terracotta);
+  margin: var(--spacing-xl) auto 0;
+  border-radius: 2px;
+}
+
+.section:last-of-type::after {
+  display: none;
+}
+
 .section-title {
   text-align: center;
   margin-bottom: var(--spacing-sm);
@@ -413,6 +431,8 @@ address {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-top: 3px solid var(--terracotta);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-icon {
@@ -528,6 +548,7 @@ address {
   padding: var(--spacing-md);
   background-color: var(--cream);
   border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-icon {
@@ -613,6 +634,7 @@ address {
 .content-image img {
   border-radius: 8px;
   width: 100%;
+  box-shadow: 0 4px 20px rgba(74, 63, 53, 0.15);
 }
 
 .image-caption {
@@ -645,6 +667,7 @@ address {
 .gallery-image img {
   border-radius: 8px;
   width: 100%;
+  box-shadow: 0 4px 20px rgba(74, 63, 53, 0.15);
 }
 
 .gallery-text h3 {
@@ -666,6 +689,8 @@ address {
   padding: var(--spacing-md);
   border-radius: 8px;
   text-align: center;
+  border-top: 3px solid var(--terracotta);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .amenity-item h4 {
@@ -826,6 +851,21 @@ address {
   background-color: var(--dark-brown);
   color: var(--cream);
   padding: var(--spacing-xl) 0 var(--spacing-md);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.footer > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-grid {
@@ -835,7 +875,7 @@ address {
 }
 
 .footer-logo {
-  width: 80px;
+  width: 100px;
   height: auto;
   margin-bottom: var(--spacing-sm);
   border-radius: 4px;
@@ -895,13 +935,20 @@ address {
   opacity: 0.8;
 }
 
+.footer-tagline {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: var(--spacing-xs);
+  font-style: italic;
+}
+
 /* ========================================
    Tablet Styles (min-width: 640px)
    ======================================== */
 @media (min-width: 640px) {
   :root {
-    --spacing-xl: 4rem;
-    --spacing-xxl: 5rem;
+    --spacing-xl: 5rem;
+    --spacing-xxl: 6rem;
   }
 
   h1 {
@@ -1001,6 +1048,7 @@ address {
 @media (min-width: 1024px) {
   :root {
     --header-height: 80px;
+    --spacing-xl: 6rem;
   }
 
   h1 {
@@ -1009,6 +1057,16 @@ address {
 
   h2 {
     font-size: 2.25rem;
+  }
+
+  /* Remove body phone bar padding on desktop */
+  body {
+    padding-bottom: 0;
+  }
+
+  /* Hide mobile phone bar on desktop */
+  .mobile-phone-bar {
+    display: none;
   }
 
   /* Header - Desktop Navigation */
@@ -1050,17 +1108,43 @@ address {
     min-height: 90vh;
   }
 
+  .hero-content {
+    text-align: left;
+  }
+
   .hero-content h1 {
     font-size: 3rem;
     max-width: 800px;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
   }
 
   .hero-subtitle {
     max-width: 700px;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
+  }
+
+  .hero-ctas {
+    justify-content: flex-start;
+  }
+
+  /* Decorative image framing (#6) */
+  .gallery-image {
+    position: relative;
+  }
+
+  .gallery-image::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: -12px;
+    bottom: -12px;
+    border: 3px solid var(--terracotta);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.4;
   }
 
   /* Features Grid */
@@ -1119,15 +1203,29 @@ address {
    ======================================== */
 .page-header {
   background-color: var(--dark-brown);
+  background-image: url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
   color: var(--white);
   text-align: center;
   padding: calc(var(--header-height) + var(--spacing-xl)) var(--spacing-sm) var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(74, 63, 53, 0.75);
 }
 
 .page-header h1 {
   color: var(--white);
   font-size: 2rem;
   margin-bottom: var(--spacing-xs);
+  position: relative;
+  z-index: 1;
 }
 
 .page-header p {
@@ -1136,6 +1234,8 @@ address {
   max-width: 600px;
   margin: 0 auto;
   opacity: 0.9;
+  position: relative;
+  z-index: 1;
 }
 
 /* ========================================
@@ -1304,6 +1404,7 @@ address {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-left: 4px solid var(--terracotta);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .area-card h3 {
@@ -1428,6 +1529,100 @@ address {
   background-color: var(--cream);
   border-color: var(--cream);
   color: var(--dark-brown);
+}
+
+/* ========================================
+   Scroll Fade-In Animations (#3)
+   ======================================== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ========================================
+   Card Hover Effects (#4)
+   ======================================== */
+@media (hover: hover) {
+  .feature-card:hover,
+  .service-item:hover,
+  .amenity-item:hover,
+  .area-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(74, 63, 53, 0.15);
+  }
+}
+
+/* ========================================
+   Mobile Phone Bar (#8)
+   ======================================== */
+.mobile-phone-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: var(--terracotta);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-phone-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.mobile-phone-bar a:hover,
+.mobile-phone-bar a:focus {
+  color: var(--white);
+}
+
+/* ========================================
+   Button Refinement (#10)
+   ======================================== */
+@media (hover: hover) {
+  .btn-primary:hover {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes hero-cta-glow {
+  0% { box-shadow: 0 0 0 0 rgba(196, 164, 132, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(196, 164, 132, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(196, 164, 132, 0); }
+}
+
+.hero .btn-primary {
+  animation: hero-cta-glow 2s ease-out 1s 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .btn-primary {
+    animation: none;
+  }
 }
 
 /* ========================================

@@ -199,4 +199,36 @@
     });
   }
 
+  // ========================================
+  // Scroll Fade-In Animations
+  // ========================================
+  var fadeInSections = document.querySelectorAll('.fade-in-section');
+
+  if (fadeInSections.length > 0) {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      // If reduced motion or no IO support, show all immediately
+      fadeInSections.forEach(function(section) {
+        section.classList.add('is-visible');
+      });
+    } else {
+      var fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      fadeInSections.forEach(function(section) {
+        fadeObserver.observe(section);
+      });
+    }
+  }
+
 })();
