@@ -1,5 +1,5 @@
-import re
 import os
+import re
 
 def minify_css(content):
     # Remove comments
@@ -11,14 +11,19 @@ def minify_css(content):
     return content.strip()
 
 def minify_js(content):
-    # Basic JS minification (remove comments and extra whitespace)
-    # Remove single line comments
-    content = re.sub(r'//.*', '', content)
-    # Remove multi-line comments
+    # Basic JS minification (safe for this project layout)
+    # Remove multi-line comments first
     content = re.sub(r'/\*[\s\S]*?\*/', '', content)
-    # Remove empty lines
-    content = os.linesep.join([s for s in content.splitlines() if s.strip()])
-    return content
+    lines = []
+    for line in content.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # Remove full-line // comments only.
+        if stripped.startswith('//'):
+            continue
+        lines.append(stripped)
+    return ''.join(lines)
 
 def process_file(filepath, minifier):
     try:
@@ -43,4 +48,5 @@ def process_file(filepath, minifier):
 
 if __name__ == "__main__":
     process_file("styles.css", minify_css)
-    process_file("script.js", minify_js)
+    process_file("core.js", minify_js)
+    process_file("contact.js", minify_js)

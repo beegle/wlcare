@@ -1,0 +1,13 @@
+{
+  "name": "wlcare-site",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "esbuild styles.css --minify --outfile=styles.min.css",
+    "build:js": "esbuild core.js --minify --outfile=core.min.js && esbuild contact.js --minify --outfile=contact.min.js",
+    "check:build": "npm run build && git diff --exit-code -- styles.min.css core.min.js contact.min.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

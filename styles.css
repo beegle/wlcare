@@ -8,8 +8,8 @@
   --warm-cream: #FDF8F0;
   --brown: #6B5B4F;
   --dark-brown: #4A3F35;
-  --terracotta: #C4A484;
-  --terracotta-hover: #A8896E;
+  --terracotta: #8B6B4A;
+  --terracotta-hover: #73583D;
   --white: #FFFFFF;
 
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
@@ -56,13 +56,20 @@ img {
 
 a {
   color: var(--terracotta);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
   transition: color 0.2s ease;
 }
 
 a:hover,
 a:focus {
   color: var(--terracotta-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--terracotta);
+  outline-offset: 2px;
 }
 
 h1, h2, h3, h4 {
@@ -123,6 +130,7 @@ address {
   transition: all 0.2s ease;
   min-height: 44px;
   min-width: 44px;
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -284,6 +292,7 @@ address {
   font-size: 1.25rem;
   color: var(--dark-brown);
   font-weight: 500;
+  text-decoration: none;
 }
 
 .nav-link:hover,
@@ -416,6 +425,14 @@ address {
   font-size: 1.1rem;
 }
 
+.centered-link {
+  text-align: center;
+}
+
+.centered-link.spaced {
+  margin-top: var(--spacing-lg);
+}
+
 /* ========================================
    About Section - Features Grid
    ======================================== */
@@ -446,6 +463,17 @@ address {
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+.discount-step-icon {
+  background-color: var(--cream);
+}
+
+.discount-step-number {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--terracotta);
 }
 
 /* Simple CSS icons for features */
@@ -757,6 +785,11 @@ address {
   color: var(--terracotta);
 }
 
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #B23B3B;
+}
+
 /* Contact Form */
 .contact-form-wrapper {
   background-color: var(--white);
@@ -903,6 +936,7 @@ address {
 .footer-links a {
   color: var(--cream);
   opacity: 0.9;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
@@ -912,6 +946,7 @@ address {
 
 .footer-contact a {
   color: var(--cream);
+  text-decoration: none;
 }
 
 .footer-contact a:hover {
@@ -1316,6 +1351,7 @@ address {
   font-weight: 600;
   font-size: 1rem;
   margin-top: var(--spacing-sm);
+  text-decoration: none;
 }
 
 .learn-more::after {
@@ -1532,9 +1568,58 @@ address {
 }
 
 /* ========================================
+   Trust Section
+   ======================================== */
+.trust-strip {
+  background-color: var(--white);
+  padding: var(--spacing-md) 0;
+  border-top: 1px solid rgba(74, 63, 53, 0.12);
+  border-bottom: 1px solid rgba(74, 63, 53, 0.12);
+}
+
+.trust-items {
+  list-style: none;
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.trust-items li {
+  background-color: var(--warm-cream);
+  border-left: 4px solid var(--terracotta);
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  color: var(--dark-brown);
+}
+
+/* ========================================
+   Testimonials
+   ======================================== */
+.testimonials-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.testimonial {
+  background-color: var(--white);
+  border: 1px solid rgba(74, 63, 53, 0.12);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+}
+
+.testimonial blockquote {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--dark-brown);
+}
+
+.testimonial footer {
+  color: var(--brown);
+  font-weight: 600;
+}
+
+/* ========================================
    Scroll Fade-In Animations (#3)
    ======================================== */
-.fade-in-section {
+.js .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -1622,6 +1707,16 @@ address {
 @media (prefers-reduced-motion: reduce) {
   .hero .btn-primary {
     animation: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trust-items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

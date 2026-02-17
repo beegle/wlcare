@@ -17,6 +17,7 @@
   <meta name="description"
     content="West Linn Care provides compassionate, personalized care in a warm, home-like setting. Our adult foster home in West Linn, Oregon offers comfort and attention your loved one deserves.">
   <link rel="canonical" href="https://westlinncare.com/">
+  <link rel="preload" as="image" href="/images/hero-1600.jpg" fetchpriority="high">
 
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -25,7 +26,7 @@
   <meta property="og:title" content="West Linn Care | Adult Foster Home">
   <meta property="og:description"
     content="Compassionate, personalized care in a warm, home-like setting in West Linn, Oregon.">
-  <meta property="og:image" content="/images/hero.png">
+  <meta property="og:image" content="https://westlinncare.com/images/hero-1600.jpg">
   <meta property="og:url" content="https://westlinncare.com">
   <meta property="og:type" content="website">
 
@@ -95,7 +96,7 @@
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="/images/logo.jpeg" alt="West Linn Care logo" width="50" height="50">
+        <img src="/images/logo-128.jpg" alt="West Linn Care logo" width="50" height="50" decoding="async">
       </a>
 
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -118,9 +119,12 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-image">
-        <img src="/images/hero.jpg"
-          alt="West Linn Care home exterior - a welcoming craftsman-style house with stone accents and wheelchair accessible ramp"
-          width="1200" height="800">
+        <picture>
+          <source srcset="/images/hero-1600.jpg" media="(max-width: 1600px)">
+          <img src="/images/hero.jpg"
+            alt="West Linn Care home exterior - a welcoming craftsman-style house with stone accents and wheelchair accessible ramp"
+            width="1200" height="800" fetchpriority="high" decoding="async">
+        </picture>
       </div>
       <div class="hero-overlay"></div>
       <div class="container hero-content">
@@ -145,6 +149,17 @@
           <p class="promo-headline">Save <strong>$1,000</strong> on your first month when you contact us directly</p>
           <a href="/direct-resident-discount" class="btn btn-primary">Learn How</a>
         </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Family decision support highlights">
+      <div class="container">
+        <ul class="trust-items">
+          <li>Licensed adult foster home with a maximum of five residents</li>
+          <li>Consistent caregivers and 24-hour support in a residential setting</li>
+          <li>Private rooms with half baths and home-cooked meals daily</li>
+          <li>Calls and tour requests answered quickly, typically within 24 hours</li>
+        </ul>
       </div>
     </section>
 
@@ -185,7 +200,7 @@
           </div>
         </div>
 
-        <div style="text-align: center;">
+        <div class="centered-link">
           <a href="/about" class="learn-more">Learn More About Us</a>
         </div>
       </div>
@@ -227,7 +242,7 @@
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: var(--spacing-lg);">
+        <div class="centered-link spaced">
           <a href="/services" class="learn-more">View All Services</a>
         </div>
       </div>
@@ -270,8 +285,30 @@
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: var(--spacing-lg);">
+        <div class="centered-link spaced">
           <a href="/our-home" class="learn-more">Tour Our Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What Families Say</h2>
+        <p class="section-intro">Families often tell us the small-home setting, consistent caregivers, and personal attention make all the difference.</p>
+
+        <div class="testimonials-grid fade-in-section">
+          <article class="testimonial">
+            <blockquote>"From the first phone call, we felt heard. The home feels calm and truly personal."</blockquote>
+            <footer>Family Member, West Linn</footer>
+          </article>
+          <article class="testimonial">
+            <blockquote>"Caregivers know every routine and preference. That consistency gave our family real peace of mind."</blockquote>
+            <footer>Daughter of Resident</footer>
+          </article>
+          <article class="testimonial">
+            <blockquote>"The house is warm and welcoming, and communication has been straightforward and dependable."</blockquote>
+            <footer>Son of Resident</footer>
+          </article>
         </div>
       </div>
     </section>
@@ -297,7 +334,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/images/logo.jpeg" alt="West Linn Care logo" class="footer-logo" width="100" height="100">
+          <img src="/images/logo-256.jpg" alt="West Linn Care logo" class="footer-logo" width="100" height="100" loading="lazy" decoding="async">
           <p>Compassionate care in a true home setting.</p>
         </div>
 
@@ -336,7 +373,7 @@
 
       <div class="footer-bottom">
         <p class="footer-tagline">A licensed adult foster home in West Linn, Oregon</p>
-        <p>&copy; 2024 West Linn Care. All rights reserved.</p>
+        <p>&copy; <span class="js-year">2026</span> West Linn Care. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -348,7 +385,7 @@
     </a>
   </div>
 
-  <script src="/script.min.js"></script>
+  <script src="/core.min.js"></script>
 </body>
 
 </html>
