@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17894544549"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-17894544549');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just 3 Minutes from Safeway | West Linn Care</title>
+  <meta name="description"
+    content="West Linn Care is just a 3-minute drive from Safeway on Salamo Road. Visit our adult foster home in the quiet Rosemont neighborhood of West Linn, Oregon.">
+  <link rel="canonical" href="https://westlinncare.com/safeway">
+
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Just 3 Minutes from Safeway | West Linn Care">
+  <meta property="og:description"
+    content="West Linn Care is just a 3-minute drive from Safeway on Salamo Road. Visit our adult foster home in the Rosemont neighborhood.">
+  <meta property="og:image" content="https://westlinncare.com/images/hero-1600.jpg">
+  <meta property="og:url" content="https://westlinncare.com/safeway">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:brand" content="West Linn Care">
+  <meta name="twitter:title" content="Just 3 Minutes from Safeway | West Linn Care">
+  <meta name="twitter:description"
+    content="West Linn Care is just a 3-minute drive from Safeway on Salamo Road. Visit our adult foster home in the Rosemont neighborhood.">
+  <meta name="twitter:image" content="https://westlinncare.com/images/hero-1600.jpg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://westlinncare.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Visit from Safeway",
+      "item": "https://westlinncare.com/safeway"
+    }]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.min.css">
+
+  <style>
+    /* Safeway Hero */
+    .safeway-hero {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--warm-cream) 100%);
+      padding: calc(var(--header-height, 70px) + 2rem) 1rem 2rem;
+      text-align: center;
+    }
+
+    .safeway-hero h1 {
+      color: var(--dark-brown);
+      font-size: 1.75rem;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .safeway-hero .hero-subtitle {
+      color: var(--brown);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Map Container */
+    .safeway-map-container {
+      max-width: 380px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .safeway-map-container svg {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(74, 63, 53, 0.12);
+    }
+
+    /* Hero CTAs */
+    .safeway-hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    /* SVG Animation Styles */
+    .route-line {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    .safeway-map-container.animate .route-line {
+      animation: drawRoute 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+    }
+
+    @keyframes drawRoute {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .route-dot {
+      opacity: 0;
+    }
+
+    .safeway-map-container.animate .route-dot {
+      animation: showDot 0.2s ease 0.4s forwards;
+    }
+
+    @keyframes showDot {
+      to { opacity: 1; }
+    }
+
+    .destination-pin {
+      transform-origin: 430px 119px;
+    }
+
+    .safeway-map-container.animate .destination-pin {
+      animation: pinPulse 0.5s ease 2.8s 2;
+    }
+
+    @keyframes pinPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .travel-badge {
+      opacity: 0;
+    }
+
+    .safeway-map-container.animate .travel-badge {
+      animation: fadeInBadge 0.4s ease 2s forwards;
+    }
+
+    @keyframes fadeInBadge {
+      to { opacity: 1; }
+    }
+
+    .wlc-label {
+      opacity: 0;
+    }
+
+    .safeway-map-container.animate .wlc-label {
+      animation: fadeInBadge 0.4s ease 2.6s forwards;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .route-line,
+      .route-dot,
+      .travel-badge,
+      .wlc-label {
+        animation: none !important;
+        opacity: 1 !important;
+        stroke-dashoffset: 0 !important;
+      }
+
+      .destination-pin {
+        animation: none !important;
+      }
+    }
+
+    /* Tablet */
+    @media (min-width: 640px) {
+      .safeway-hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .safeway-hero-cta {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .safeway-map-container {
+        max-width: 420px;
+      }
+    }
+
+    /* Desktop: side-by-side */
+    @media (min-width: 1024px) {
+      .safeway-hero {
+        text-align: left;
+        padding-top: calc(var(--header-height, 70px) + 3rem);
+        padding-bottom: 3rem;
+      }
+
+      .safeway-hero > .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1.5rem 3rem;
+        align-items: center;
+      }
+
+      .safeway-hero-content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .safeway-map-container {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        max-width: 440px;
+        margin: 0;
+      }
+
+      .safeway-hero-cta {
+        grid-column: 1;
+        grid-row: 2;
+        justify-content: flex-start;
+        align-self: start;
+      }
+
+      .safeway-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .safeway-hero .hero-subtitle {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/images/logo-128.jpg" alt="West Linn Care logo" width="50" height="50" decoding="async">
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/services" class="nav-link">Services</a></li>
+          <li><a href="/our-home" class="nav-link">Our Home</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="/contact" class="btn btn-primary nav-cta">Schedule a Tour</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero with Route Animation -->
+    <section class="safeway-hero">
+      <div class="container">
+        <div class="safeway-hero-content">
+          <h1>Just 3 Minutes from Your Neighborhood Safeway</h1>
+          <p class="hero-subtitle">West Linn Care is right around the corner &mdash; a warm, home-like alternative to large care facilities, nestled in the quiet Rosemont neighborhood.</p>
+        </div>
+
+        <div class="safeway-map-container" aria-label="Animated route map">
+          <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Map showing the 3-minute drive from Safeway on Salamo Road to West Linn Care on Rosemont Road">
+            <title>Route from Safeway to West Linn Care</title>
+            <desc>A stylized map showing the short drive from Safeway at 22000 Salamo Road to West Linn Care at 1560 Rosemont Road in West Linn, Oregon. A short drive along Salamo Road to the intersection, then a longer stretch on Rosemont Road. Approximately 1.1 miles in 3 minutes.</desc>
+
+            <!-- Background -->
+            <rect width="500" height="280" fill="#FDF8F0" rx="16"/>
+
+            <!-- Decorative background streets -->
+            <g stroke="#E8DFD0" stroke-width="2" fill="none" opacity="0.4">
+              <path d="M 0,70 Q 130,65 260,72 Q 390,78 500,70"/>
+              <path d="M 0,210 Q 160,205 320,212 Q 430,218 500,210"/>
+              <path d="M 200,0 Q 195,70 202,140 Q 198,210 205,280"/>
+              <path d="M 380,0 Q 375,70 382,140 Q 378,210 385,280"/>
+            </g>
+
+            <!-- Decorative trees -->
+            <g fill="#B5C9A8" opacity="0.35">
+              <circle cx="40" cy="55" r="11"/>
+              <circle cx="28" cy="68" r="7"/>
+              <circle cx="35" cy="175" r="12"/>
+              <circle cx="22" cy="188" r="8"/>
+              <circle cx="165" cy="35" r="10"/>
+              <circle cx="300" cy="42" r="12"/>
+              <circle cx="315" cy="32" r="8"/>
+              <circle cx="440" cy="50" r="9"/>
+              <circle cx="220" cy="240" r="11"/>
+              <circle cx="340" cy="245" r="12"/>
+              <circle cx="355" cy="235" r="8"/>
+              <circle cx="460" cy="230" r="10"/>
+              <circle cx="130" cy="250" r="9"/>
+            </g>
+
+            <!-- Salamo Road - short vertical segment on the left side (~80px) -->
+            <path d="M 75,260 Q 73,220 75,180 Q 77,140 80,120"
+              stroke="#D4C9BC" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+            <!-- Rosemont Road - long horizontal across the upper portion (~380px) -->
+            <path d="M 15,120 Q 100,118 200,120 Q 320,122 480,118"
+              stroke="#D4C9BC" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+            <!-- Stoplight indicator at intersection -->
+            <circle cx="78" cy="120" r="5" fill="#C9A84C" opacity="0.7"/>
+
+            <!-- Road labels -->
+            <text fill="#8C7E72" font-size="11" font-family="'Source Sans 3', sans-serif" letter-spacing="1"
+              transform="translate(58, 215) rotate(-90)">SALAMO RD</text>
+            <text x="260" y="110" fill="#8C7E72" font-size="11" font-family="'Source Sans 3', sans-serif" letter-spacing="1">ROSEMONT RD</text>
+
+            <!-- Animated route path: short up Salamo, right turn, long stretch on Rosemont -->
+            <!-- Salamo leg ~80px, Rosemont leg ~350px — ratio ~1:4.4 matching real distances -->
+            <path id="route-path"
+              d="M 75,230 Q 74,190 76,160 Q 78,130 90,120 Q 140,118 220,120 Q 310,121 430,119"
+              stroke="#8B6B4A" stroke-width="4" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="route-line"
+              opacity="0.85"/>
+
+            <!-- Route dot (animated via JS) -->
+            <circle id="route-dot" class="route-dot" r="7" fill="#8B6B4A"/>
+
+            <!-- Safeway marker (bottom of short Salamo segment) -->
+            <g transform="translate(75, 230)">
+              <!-- Pin shape -->
+              <path d="M 0,0 C -10,-16 -16,-26 0,-34 C 16,-26 10,-16 0,0 Z" fill="#2D5F2D"/>
+              <circle cx="0" cy="-22" r="7" fill="white"/>
+              <text x="0" y="-19" text-anchor="middle" fill="#2D5F2D" font-size="10" font-weight="bold" font-family="'Source Sans 3', sans-serif">S</text>
+              <!-- Label -->
+              <rect x="12" y="-32" width="70" height="20" rx="4" fill="white" opacity="0.9"/>
+              <text x="47" y="-18" text-anchor="middle" fill="#4A3F35" font-size="12" font-weight="600" font-family="'Lora', serif">Safeway</text>
+            </g>
+
+            <!-- West Linn Care marker (far right on Rosemont) -->
+            <g class="destination-pin" transform="translate(430, 119)">
+              <!-- Pin shape -->
+              <path d="M 0,0 C -10,-16 -16,-26 0,-34 C 16,-26 10,-16 0,0 Z" fill="#8B6B4A"/>
+              <circle cx="0" cy="-22" r="7" fill="white"/>
+              <!-- House icon -->
+              <path d="M 0,-28 L -4,-24 L -4,-19 L 4,-19 L 4,-24 Z" fill="#8B6B4A"/>
+            </g>
+
+            <!-- West Linn Care label -->
+            <g class="wlc-label" transform="translate(430, 119)">
+              <rect x="-55" y="8" width="110" height="22" rx="4" fill="#8B6B4A"/>
+              <text x="0" y="23" text-anchor="middle" fill="white" font-size="12" font-weight="600" font-family="'Lora', serif">West Linn Care</text>
+            </g>
+
+            <!-- Travel time badge (positioned along the Rosemont leg) -->
+            <g class="travel-badge" transform="translate(250, 165)">
+              <rect x="-38" y="-15" width="76" height="30" rx="15" fill="#8B6B4A"/>
+              <text x="0" y="5" text-anchor="middle" fill="white" font-size="13" font-weight="600" font-family="'Source Sans 3', sans-serif">3 min</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="safeway-hero-cta">
+          <a href="/contact" class="btn btn-primary btn-large">Schedule a Tour</a>
+          <a href="tel:+15033875317" class="btn btn-secondary btn-large">
+            <span class="phone-icon" aria-hidden="true"></span>
+            Call (503) 387-5317
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><span class="current" aria-current="page">Visit from Safeway</span></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Proximity Benefits -->
+    <section class="section section-cream">
+      <div class="container">
+        <h2 class="section-title">Your Neighborhood Care Home</h2>
+        <p class="section-intro">Conveniently located in the Rosemont neighborhood, West Linn Care is just a short drive from your everyday errands.</p>
+
+        <div class="features-grid fade-in-section">
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>3-Minute Drive</h3>
+            <p>Just 1.5 miles from Safeway on Salamo Road. Pop in for a tour on your way home from shopping.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3>True Home Environment</h3>
+            <p>A real house in the quiet Rosemont neighborhood, not an institutional facility. It feels like home because it is one.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>5-Resident Maximum</h3>
+            <p>With only five residents, your loved one receives truly personalized, one-on-one attention every day.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3>Consistent Caregivers</h3>
+            <p>The same familiar faces every day, building genuine relationships and trust with your loved one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">A Place That Feels Like Home</h2>
+        <p class="section-intro">Step inside and you'll see why families choose West Linn Care. Every detail is designed for comfort and warmth.</p>
+
+        <div class="content-with-image fade-in-section">
+          <div class="content-text">
+            <h3>Warm, Inviting Spaces</h3>
+            <p>Our living room features comfortable seating, natural light, and a piano for music lovers. Residents gather here for conversation, activities, and quiet relaxation throughout the day.</p>
+          </div>
+          <div class="content-image">
+            <img src="/images/living_room.jpeg" alt="Bright living room with comfortable seating and a piano at West Linn Care" width="800" height="600" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="content-with-image content-with-image-reverse fade-in-section">
+          <div class="content-text">
+            <h3>Home-Cooked Meals Together</h3>
+            <p>Our dining room with bay windows is where residents enjoy home-cooked meals tailored to their preferences and dietary needs. Mealtimes are social, relaxed, and something to look forward to.</p>
+          </div>
+          <div class="content-image">
+            <img src="/images/dining_room.jpeg" alt="Dining area with bay windows at West Linn Care" width="800" height="600" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Ready to Visit? We're Just Around the Corner.</h2>
+        <p>Schedule a tour or call us today. We'd love to show you around our home.</p>
+        <div class="cta-buttons">
+          <a href="/contact" class="btn btn-primary btn-large">Schedule a Tour</a>
+          <a href="tel:+15033875317" class="btn btn-secondary btn-large">
+            <span class="phone-icon" aria-hidden="true"></span>
+            Call (503) 387-5317
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/images/logo-256.jpg" alt="West Linn Care logo" class="footer-logo" width="100" height="100" loading="lazy" decoding="async">
+          <p>Compassionate care in a true home setting.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/our-home">Our Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/senior-care">What Is an Adult Foster Home?</a></li>
+            <li><a href="/adult-foster-home-vs-assisted-living">Adult Foster Home vs Assisted Living</a></li>
+            <li><a href="/areas-we-serve">Areas We Serve</a></li>
+            <li><a href="/direct-resident-discount">Direct Resident Discount</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            <a href="tel:+15033875317">(503) 387-5317</a><br>
+            <a href="mailto:ken@westlinncare.com">ken@westlinncare.com</a>
+          </p>
+          <address>
+            1560 Rosemont Road<br>
+            West Linn, OR 97068
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-tagline">A licensed adult foster home in West Linn, Oregon</p>
+        <p>&copy; <span class="js-year">2026</span> West Linn Care. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-phone-bar" aria-label="Call us">
+    <a href="tel:+15033875317">
+      <span class="phone-icon" aria-hidden="true"></span>
+      Call (503) 387-5317
+    </a>
+  </div>
+
+  <script src="/core.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mapContainer = document.querySelector('.safeway-map-container');
+      var routePath = document.getElementById('route-path');
+      var routeDot = document.getElementById('route-dot');
+
+      if (!mapContainer || !routePath) return;
+
+      // Set accurate stroke-dasharray from actual path length
+      var pathLength = routePath.getTotalLength();
+      routePath.style.strokeDasharray = pathLength;
+      routePath.style.strokeDashoffset = pathLength;
+
+      // Position dot at start
+      var startPoint = routePath.getPointAtLength(0);
+      routeDot.setAttribute('cx', startPoint.x);
+      routeDot.setAttribute('cy', startPoint.y);
+
+      if (reducedMotion) {
+        // Show completed state immediately
+        mapContainer.classList.add('animate');
+        routePath.style.strokeDashoffset = '0';
+        routeDot.style.opacity = '1';
+        var endPoint = routePath.getPointAtLength(pathLength);
+        routeDot.setAttribute('cx', endPoint.x);
+        routeDot.setAttribute('cy', endPoint.y);
+        return;
+      }
+
+      function animateDot() {
+        var duration = 2200; // Match CSS drawRoute duration
+        var delay = 400;     // Match CSS animation delay
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime - delay;
+
+          if (elapsed < 0) {
+            requestAnimationFrame(step);
+            return;
+          }
+
+          var progress = Math.min(elapsed / duration, 1);
+          // Cubic bezier approximation matching CSS ease
+          var eased = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+          var point = routePath.getPointAtLength(eased * pathLength);
+          routeDot.setAttribute('cx', point.x);
+          routeDot.setAttribute('cy', point.y);
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      // Trigger animation when map is in viewport
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              mapContainer.classList.add('animate');
+              animateDot();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(mapContainer);
+      } else {
+        mapContainer.classList.add('animate');
+        animateDot();
+      }
+    })();
+  </script>
+</body>
+
+</html>
